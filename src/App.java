@@ -8,7 +8,7 @@ public class App {
     public static ArrayList<Schallplatte> alleSchallplatten = new ArrayList<>();
     public static void main(String[] args) throws Exception {
 
-        
+    }
     }
         //ArrayList zu den Buchungen 
     public static void buchung(){
@@ -26,7 +26,37 @@ public class App {
     buchungen.add(new Buchung(k2, s1));
     buchungen.add(new Buchung(k2, s1));
     buchungen.add(new Buchung(k2, s1));
-    buchungen.add(new Buchung(k2, s1));
+
+    
+    int index = 0;
+    for(Buchung buchung : buchungen){
+        
+        //Altersbeschränkung
+        if(buchung.getKunde().getAlter() < buchung.getMedium().getFSK()){
+            System.out.println("Nicht alt genug");
+            buchungen.remove(index);
+        }
+        else{
+            // Kunde hat zu viele Medien 
+            if(buchung.getKunde().getAusleihen().length > 5){
+                System.out.println("Zu viele Medien");
+                buchungen.remove(index);
+            }
+            else{
+                //Schallplatte überprüfen
+                if(buchung.getKunde().getAusleihen() < buchung.getMedium().getDarfVerliehenwerden()){
+                    System.out.println("Schallplatte kann nicht ausgeliehen werden");
+                    buchung.remove(index);
+            }
+            else{
+                
+                buchung.getKunde().ausleihen[buchung.getKunde().getAusleihen().length] = buchung.getMedium();
+                System.out.println("Buchvorgang erfolgreich ");
+            }
+        }
+        index++; //Index immer +1
+    }
+
        
 
 
@@ -44,7 +74,7 @@ Kunde k2 = new Kunde("Frank", "Mier", 73, 12365)
 BlueRay b1 = new BlueRay("Reihngold", 6, 190, true, false);
 DvD d1 = new DvD("König der Löwen", 0, 90, true, false);
 CD c1 = new CD("Drei ???", 12, 60, true, false);
-Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false)
+Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false);
 
 
         buchungen.add(new Buchung(k2, d1));
@@ -59,22 +89,7 @@ Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false)
         int index = 0;
         for(Buchung buchung : buchungen){
             
-            // Altersbescheränkung
-            if(buchung.getKunde().getAlter() < buchung.getMedium().getFSK()){
-                System.out.println("Kunde ist zu Jung");
-            }
-            else{
-                // Ob der Kunde schon die volle Anzahl ausgeliehen hat
-                if(buchung.getKunde().getAusleihen().length > 5){
-                    System.out.println("Es wurden zu viele Medien ausgeliehen");
-                }
-                else{
-                    buchung.getKunde().ausleihen[buchung.getKunde().getAusleihen().length] = buchung.getMedium();
-                    System.out.println("Kunde hat ein Medium erfolgreich ausgeliehen");
-                }
-            }
-            index++; //Index immer +1 gerechnet
-        }
+           
     }
 
 {
@@ -91,16 +106,42 @@ Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false)
     k1.getVerwarnungen().add(v4);
     k1.getVerwarnungen().add(v5);
 
+
+    int index = 0;
+        // verwarnungen werden überprüft
+        for(Buchung buchung : buchungen){
+            index++;
+            if(buchung.getKunde().getAlter() < buchung.getMedium().getFSK()){
+                System.out.println("Nicht alt genug");
+                buchungen.remove(index);
+            }
+            else{
+                if(buchung.getKunde().getAusleihen().length > 5){
+                    System.out.println("Zu viele Medien ausgeliehen");
+                    buchungen.remove(index);
+                }
+                else{
+                    if(buchung.getKunde().getVerwarnungen().size() >= 5){
+                        System.out.println(" zu viele Verwarnungen");
+                        buchungen.remove(index);
+                    }
+                    else{
+                    buchung.getKunde().ausleihen[buchung.getKunde().getAusleihen().length] = buchung.getMedium();
+                    System.out.println("Buchvorgang  durcheführt");
+                    }
+                }
+            }
+        }
 }
        
 
    {
 
-    //
+    
         BlueRay b1 = new BlueRay("Reihngold", 6, 190, true, false);
         DvD d1 = new DvD("König der Löwen", 0, 90, true, false);
         CD c1 = new CD("Drei ???", 12, 60, true, false);
-        Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false)
+        Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false);
 
         alleMedien.add(d1);
         alleMedien.add(b1);
@@ -140,10 +181,11 @@ Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false)
                 medien.setDarfVerliehenwerden(false);
             }
             else{                                                               //Schallplatte wurdevon "von darf verliehen werden " zu "darf nicht verliehen werden " geändert und andrers herum
-                medien.setDarfVerliehenwerden(true);;
+                medien.setDarfVerliehenwerden(true);
             }
         System.out.println("Ausleihe der Schallplatte überschreiben"); //!!
         }
     }
 }
 
+    }
