@@ -1,11 +1,19 @@
 import java.util.ArrayList;
 
 public class App {
+
+
+
+
+
+
     
     // Alle ArrayListen die in der App.java benutzt werden müssen
     public static ArrayList<Buchung> buchungen = new ArrayList<>();
     public static ArrayList<Medien> alleMedien = new ArrayList<>();
     public static ArrayList<Schallplatte> alleSchallplatten = new ArrayList<>();
+
+
     public static void main(String[] args) throws Exception {
 
     }
@@ -19,34 +27,34 @@ public class App {
         BlueRay b1 = new BlueRay("Reihngold", 6, 190, true, false);
         DvD d1 = new DvD("König der Löwen", 0, 90, true, false);
         CD c1 = new CD("Drei ???", 12, 60, true, false);
-        Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false)
+        Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false);
 
     buchungen.add(new Buchung(k2, s1));
     buchungen.add(new Buchung(k2, s1));
-    buchungen.add(new Buchung(k2, s1));
+    buchungen.add(new Buchung(k2, s1));         //Buchung im Terminal ausgeben
     buchungen.add(new Buchung(k2, s1));
     buchungen.add(new Buchung(k2, s1));
 
     
-    int index = 0;
+    
     for(Buchung buchung : buchungen){
         
         //Altersbeschränkung
         if(buchung.getKunde().getAlter() < buchung.getMedium().getFSK()){
             System.out.println("Nicht alt genug");
-            buchungen.remove(index);
+           
         }
         else{
             // Kunde hat zu viele Medien 
             if(buchung.getKunde().getAusleihen().length > 5){
                 System.out.println("Zu viele Medien");
-                buchungen.remove(index);
+                
             }
             else{
                 //Schallplatte überprüfen
                 if(buchung.getKunde().getAusleihen() < buchung.getMedium().getDarfVerliehenwerden()){
                     System.out.println("Schallplatte kann nicht ausgeliehen werden");
-                    buchung.remove(index);
+                    
             }
             else{
                 
@@ -54,7 +62,7 @@ public class App {
                 System.out.println("Buchvorgang erfolgreich ");
             }
         }
-        index++; //Index immer +1
+        
     }
 
        
