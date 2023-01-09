@@ -38,6 +38,14 @@ public abstract class Medien {  //Oberklasse von CD,Dvd,Blueray,Schallplatte
         public void setVerliehen(boolean verliehen) {
             this.verliehen = verliehen;
         }
+
+        public Medien[] getDarfVerliehenwerden() {
+            return null;
+        }
+
+        public boolean getVerliehen() {
+            return false;
+        }
         
     }
     

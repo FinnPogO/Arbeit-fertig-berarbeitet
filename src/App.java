@@ -9,7 +9,7 @@ public class App {
     public static void main(String[] args) throws Exception {
 
     }
-    }
+}
         //ArrayList zu den Buchungen 
     public static void buchung(){
         //Eigenschaften der Objekte
@@ -160,7 +160,7 @@ Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false);
     public static void ueberschreibeAusleihe(){
         
         for(Medien medien : alleMedien){
-            if(medien.getVerliehen() = true){
+            if(medien.getverliehen() = true){
                 medien.setVerliehen(false);
             }
             else{                                                           //Objekte werden von "von darf verliehen werden " zu "darf nicht verliehen werden " geändert und andrers herum
@@ -185,7 +185,9 @@ Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false);
             }
         System.out.println("Ausleihe der Schallplatte überschreiben"); //!!
         }
+        
     }
 }
+
 
     }
