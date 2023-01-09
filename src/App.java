@@ -107,7 +107,7 @@ Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false);
     k1.getVerwarnungen().add(v5);
 
 
-    int index = 0;
+    
         // verwarnungen werden überprüft
         for(Buchung buchung : buchungen){
             index++;
@@ -118,12 +118,11 @@ Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false);
             else{
                 if(buchung.getKunde().getAusleihen().length > 5){
                     System.out.println("Zu viele Medien ausgeliehen");
-                    buchungen.remove(index);
+
                 }
                 else{
                     if(buchung.getKunde().getVerwarnungen().size() >= 5){
                         System.out.println(" zu viele Verwarnungen");
-                        buchungen.remove(index);
                     }
                     else{
                     buchung.getKunde().ausleihen[buchung.getKunde().getAusleihen().length] = buchung.getMedium();
@@ -138,10 +137,10 @@ Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false);
    {
 
     
-        BlueRay b1 = new BlueRay("Reihngold", 6, 190, true, false);
-        DvD d1 = new DvD("König der Löwen", 0, 90, true, false);
-        CD c1 = new CD("Drei ???", 12, 60, true, false);
-        Schallplatte s1 = new Schallplatte("ACDC", 6, 5, true, false);
+        BlueRay br1 = new BlueRay("Reihngold", 6, 190, true, false);
+        DvD dv1 = new DvD("König der Löwen", 0, 90, true, false);
+        CD cd1 = new CD("Drei ???", 12, 60, true, false);
+        Schallplatte sc1 = new Schallplatte("ACDC", 6, 5, true, false);
 
         alleMedien.add(d1);
         alleMedien.add(b1);

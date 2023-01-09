@@ -20,10 +20,10 @@ public class Schallplatte extends Medien{   //Erbt von Medein
     public void setDarfVerliehenwerden(boolean darfVerliehenwerden) {
         this.darfVerliehenwerden = darfVerliehenwerden;
     }
-    public boolean getDarfVerliehenwerden(){
-        return darfVerliehenwerden;
+    
+    public Medien[] getDarfVerliehenwerden() {
+        return super.getDarfVerliehenwerden();
     }
-
     
 
     
